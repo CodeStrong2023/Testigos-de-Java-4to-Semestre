@@ -76,6 +76,7 @@ public class EstudianteDAO {
     }
 
     //Metodo agregar un nuevo estudiante
+
     public boolean agregarEstudiante(Estudiante estudiante){
         PreparedStatement ps;
         Connection con = getConnection();
@@ -104,8 +105,8 @@ public class EstudianteDAO {
     //Metodo para modificar estudiante
     public boolean modificarEstudiante(Estudiante estudiante){
         PreparedStatement ps;
-        Connection con =getConnection();
-        String sql="UPDATE estudiantes2024 SET nombre=?,apellido=?,telefono=?,email=? WHERE idestudiantes2024=?";
+        Connection con = getConnection();
+        String sql="UPDATE estudiantes2024 SET nombre=?, apellido=?, telefono=?, email=? WHERE idestudiantes2024=?";
         try {
             ps=con.prepareStatement(sql);
             ps.setString(1, estudiante.getNombre());
@@ -128,24 +129,53 @@ public class EstudianteDAO {
         return  false;
     }//Fin metodo modificarEstudiante
 
+    public boolean eliminarEstudiante(Estudiante estudiante){
+        PreparedStatement ps;
+        Connection con = getConnection();
+        String sql = "DELETE FROM estudiantes2024 WHERE idestudiantes2024=?";
+        try{
+            ps= con.prepareStatement(sql);
+            ps.setInt(1,estudiante.getIdEstudiante());
+            ps.execute();
+            return true;
+        }catch (Exception e){
+            System.out.println("Error al eliminar estudiante: "+e.getMessage());
+        }
+        finally{
+            try{
+                con.close();
+            }catch (Exception e){
+                System.out.println("Error al cerrar la conexion: "+e.getMessage());
+            }
+        }
+        return false;
+    }
+
 
     public static  void main(String[] args){
-        //Modificar estudiante
-        var estudianteModificado=
 
-        //Listar los estudiantes
         var estudianteDao= new EstudianteDAO();
-        System.out.println("Listado de estudiante: ");
-        List<Estudiante>estudiantes=estudianteDao.listarEstudiantes();
-        estudiantes.forEach(System.out::println);//Funcion lamba para imprimir
+        //Modificar estudiante
+
+        var estudianteModificado= new Estudiante(1,"Juan Carlos","Juarez","555665666","Juan@mail.com");
+        var modificado = estudianteDao.modificarEstudiante(estudianteModificado);
+        if(modificado)
+            System.out.println("Estudiante modificado: "+estudianteModificado);
+        else
+            System.out.println("No se modifico el estudiante: "+estudianteModificado);
 
         //Agregar estudiante
         //var nuevoEstudiante= new Estudiante("Carlos","Lara","621651986","carlosl@mail.com");
         //var agregado= estudianteDao.agregarEstudiante(nuevoEstudiante);
-       // if(agregado)
-       //     System.out.println("Estudiante agregado: "+nuevoEstudiante);
-       // else
+        // if(agregado)
+        //     System.out.println("Estudiante agregado: "+nuevoEstudiante);
+        // else
         //    System.out.println("No se ha agregado estudiante: "+nuevoEstudiante);
+
+        //Listar los estudiantes
+        System.out.println("Listado de estudiante: ");
+        List<Estudiante>estudiantes=estudianteDao.listarEstudiantes();
+        estudiantes.forEach(System.out::println);//Funcion lamba para imprimir
 
 
         //Buscar por id
