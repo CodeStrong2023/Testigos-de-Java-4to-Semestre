@@ -11,8 +11,7 @@ function hablar(nombre){
     return new Promise( (resolve, reject) => { //usamos la sintaxis ES6
         setTimeout(function () {
             console.log('bla bla bla bla');
-            //resolve(nombre)
-            reject('Hay un error');
+            resolve(nombre)
         }, 1000)
     });
 }
