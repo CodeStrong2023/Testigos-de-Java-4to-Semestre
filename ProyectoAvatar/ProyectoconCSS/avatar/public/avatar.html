@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LA LEYENDA DE AANG: AVATAR</title>
+    <link
+      href="https://fonts.cdnfonts.com/css/herculanum-lt-pro"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/avatar.css" />
+  </head>
+
+  <body>
+    <!-- MAIN -->
+
+    <div class="grid-container">
+      <!-- <h1>AVATAR 🔥💧🌱🌪️</h1> -->
+      <img
+        src="/public/assets/imagen-titulo.png"
+        alt=""
+        class="imagen-titulo"
+      />
+      <a href="/public/reglitas.html"
+        ><button class="botones">Reglas</button></a
+      >
+      <div class="seleccion-ataque">
+        <section id="seleccionar-personaje">
+          <h2>Elige tu Personaje</h2>
+          <div class="boton-grid">
+            <button class="btn danger" id="zuko" data-personaje="Zuko">
+              Zuko
+            </button>
+            <button class="btn primary" id="katara" data-personaje="Katara">
+              Katara
+            </button>
+            <button class="btn success" id="aang" data-personaje="Aang">
+              Aang
+            </button>
+            <button class="btn warning" id="toph" data-personaje="Toph">
+              Toph
+            </button>
+          </div>
+
+          <button style="margin-top: 2rem" id="boton-personaje" class="botones">
+            Seleccionar
+          </button>
+          <!-- El botón para seleccionar el personaje-->
+        </section>
+
+        <section id="seleccionar-ataque">
+          <h2>Elige tu ataque</h2>
+          <!--Se puede utilizar varias veces-->
+          <p>
+            Tu personaje <span id="personaje-jugador"></span> tiene
+            <span id="vidas-jugador">3</span> vidas
+          </p>
+          <!--Pero esto debe ser dinamico, necesitamos que cambie-->
+          <p>
+            El personaje <span id="personaje-enemigo"></span> del enemigo tienen
+            <span id="vidas-enemigo">3</span> vidas
+          </p>
+          <!--Con la etiqueta spam vamos a modificar el 3 con JS-->
+          <p>
+            <button id="boton-punio" class="botones">Punio ✊</button>
+            <button id="boton-patada" class="botones">Patada 🦶</button>
+            <button id="boton-barrida" class="botones">Barrida 👣</button>
+          </p>
+        </section>
+
+        <section id="mensajes">
+          <!--Será un párrafo dinamico-->
+        </section>
+
+        <section id="reiniciar">
+          <button id="boton-reiniciar" class="botones">Reiniciar</button>
+        </section>
+      </div>
+    </div>
+
+    <script src="./js/avatar.js"></script>
+  </body>
+</html>
