@@ -1,0 +1,48 @@
+@use 'variables' as v;
+@use 'mixins';
+
+.gallery{
+    &__image-container{
+        height: 350px;
+        width: 100%;
+        background-image: url('../images/nike-1.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    &__previus{
+        @include mixins.image-btn(200px,-15px, false);
+    }
+    &__next{
+        @include mixins.image-btn(200px, 475px, false);
+
+    }
+    &__thumnails{
+        display: none;
+        @media (min-width: 1115px){
+            display: flex;
+            justify-content: space-between; 
+            width: 400px;
+            margin: auto;
+        }
+    }
+    &__thumnail{
+        width: 90px;
+        border-radius: 16px;
+        background-position: center;
+        background-size: cover;
+        &:hover{
+            cursor: pointer;
+            border: 2px solid v.$Orange;
+        }
+    }
+    @media (min-width: 1115px){
+        width: 550px;
+        &__image-container{
+            background: cover;
+            background-position: center;
+            border-radius: 16px;
+            
+            margin-bottom: 32px;
+        }      
+    }
+}

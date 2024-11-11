@@ -1,0 +1,68 @@
+@use 'variables';
+
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 24px;
+    @media(min-width: 1115px){
+        height: 112px;
+        border-bottom: 1px solid variables.$Grayish-blue;
+    }
+    &__navigation{
+        width: 175px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        @media (min-width: 1115px){
+            width: 590px;
+        }    
+    }
+    &__menu{
+        &:hover{
+            cursor: pointer;
+        }
+        @media (min-width: 1115px){
+            display: none;
+        }
+    }
+    &__logo{
+        width: 200%;
+        @media (min-width: 1115px){
+            width: 40%;
+        }
+    }
+    &__cart{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 50px;
+        @media (min-width: 1115px){
+            width: 125px;
+        }
+        &--notification{
+            display: none;
+            background-color: variables.$Orange;
+            width: 17px;
+            height: 16px;
+            border-radius: 16px;
+            position: absolute;
+            top: -1px;
+            right: 5px;
+            font-size: 13px;
+            text-align: center;
+            color: variables.$White;
+            @media (min-width: 1115px){
+                left: 25px;
+            }
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

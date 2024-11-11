@@ -1,0 +1,55 @@
+@use 'variables' as v;
+@use 'mixins';
+
+.modal-gallery{
+    width: 570px;
+    &__background{
+        @include mixins.modal-background;
+        display: none;
+        place-content: center;
+    }
+    &__close-container{
+        text-align: right;
+        height: 30px;
+    }
+    &__close{
+        width: 16px;
+        &:hover{
+            cursor: pointer;
+            content: url(../images/cruz\ orange.png);
+        }
+    }
+    &__image-container{
+        background-image: url(../images/nike-1.jpg);
+        height: 446px;
+        background-size: cover;
+        //background-position: center;
+        border-radius: 16px;
+        margin-bottom: 32px;
+        position: relative;
+    }
+    &__thumnails{
+        display: flex;
+        justify-content: space-between;  
+        width: 400px;
+        margin: auto;
+        //background-position: center;
+        //background-size: cover;
+    }
+    &__thumnail{
+        width: 90px;
+        border-radius: 16px;
+        //background-position: center;
+        //background-size: cover;
+        &:hover{
+            cursor: pointer;
+            border: 2px solid v.$Orange;
+        }
+    }
+    &__previus{
+        @include mixins.image-btn(200px, -20px, true)
+    }
+    &__next{
+        @include mixins.image-btn(200px, 550px, true)
+    }
+}

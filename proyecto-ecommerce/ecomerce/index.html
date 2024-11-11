@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAVA STORE INICIO</title>
+    <link rel="stylesheet" href="styles.css">
+ </head>
+ <body>
+  <main class="main-container">
+    <header class="header">
+        <div class="header__navigation">
+            <img class="header__menu" src="./images/navbar.png" alt="menu ">
+            <img class="header__logo" src="./images/logo2.png" alt="logo">
+    
+            <nav class="navbar">
+                <ul class="navbar__items">
+                    <li><a class="navbar__link" href="index.html">Inicio</a></li>
+                    <li class="navbar__item--dropdown">
+                        <a class="navbar__link" href="#">Categoría</a>
+                        <ul class="dropdown__menu">
+                            <li><a href="#">Hombre</a></li>
+                            <li><a href="#">Mujer</a></li>
+                            <li><a href="#">Niños</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="navbar__link" href="#">Contacto</a></li>
+                    <li><a class="navbar__link" href="#">Sobre Nosotros</a></li>
+                    <li><a class="navbar__link" href="../login/index.html">Registro</a></li>
+                </ul>
+            </nav>
+            <img class="header__menu" src="./IMG/logo1.png" alt="menu ">
+        </div>
+    </header>
+    <main>
+        <img class="asd" src="images/ciber.webp" alt="asd ">
+    <!--shop content-->
+    <div class ="card-products-conteiner">
+        <div class="product-gallery" id="shopContent"></div>
+    </div>
+    
+    <!--Enlace dinamico para cada zapatillla en particular -->
+    
+     <!--Enlace dinamico para cada zapatillla en particular -->
+        <!--<header>
+            <a href="../Inicio/index.html">Volver a inicio</a>
+        </header>-->
+        <div id="detalle-producto"></div>
+
+        <script src="productos.js"></script>
+        <script>
+            const productos = [
+                // Aquí va tu lista de productos
+            ];
+
+            // Obtener el ID del producto desde la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get("id"));
+
+            // Encontrar el producto con el ID correspondiente
+            const producto = productos.find(p => p.id === productId);
+
+            if (producto) {
+                const detalleContainer = document.getElementById("detalle-producto");
+                detalleContainer.innerHTML = `
+                    <h1>${producto.nombre}</h1>
+                    <p>${producto.descripcion}</p>
+                    <p>Precio: $${producto.precio}</p>
+                    <img src="${producto.imagen}" alt="${producto.nombre}" width="300">
+                `;
+            } else {
+                document.getElementById("detalle-producto").innerHTML = "<p>Producto no encontrado.</p>";
+            }
+        </script>
+    
+   
+    <script src="productos.js"></script> 
+    <script src="render.js"></script> 
+    <script src="main.js"></script> 
+    <script src="detalle.html"></script>
+</body>
+</html>
